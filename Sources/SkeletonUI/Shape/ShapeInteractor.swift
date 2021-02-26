@@ -21,12 +21,13 @@ protocol ShapeInteractable: AnyObject {
 }
 
 final class ShapeInteractor: ShapeInteractable {
-    let presenter = ShapePresenter()
+    let presenter: ShapePresenter
     let type: CurrentValueSubject<ShapeType, Never>
 
     private var cancellables = Set<AnyCancellable>()
 
-    init() {
+    public init(presenter: ShapePresenter = ShapePresenter()) {
+        self.presenter = presenter
         type = CurrentValueSubject<ShapeType, Never>(presenter.type)
         type.assign(to: \.type, on: presenter).store(in: &cancellables)
     }

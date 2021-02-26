@@ -10,14 +10,14 @@ protocol SkeletonInteractable: AnyObject {
     var animation: AnimationInteractable { get }
 }
 
-final class SkeletonInteractor: SkeletonInteractable {
-    let presenter: SkeletonPresenter
-    let shape: ShapeInteractable
-    let multiline: MultilineInteractable
-    let appearance: AppearanceInteractable
-    let animation: AnimationInteractable
+public final class SkeletonInteractor: SkeletonInteractable {
+    internal let presenter: SkeletonPresenter
+    internal let shape: ShapeInteractable
+    internal let multiline: MultilineInteractable
+    internal let appearance: AppearanceInteractable
+    internal let animation: AnimationInteractable
 
-    init(_ loading: Bool, transition: AnyTransition?, animated: Animation?, shape: ShapeInteractable = ShapeInteractor(), multiline: MultilineInteractable = MultilineInteractor(), appearance: AppearanceInteractable = AppearanceInteractor(), animation: AnimationInteractable = AnimationInteractor()) {
+    internal init(_ loading: Bool, transition: AnyTransition?, animated: Animation?, shape: ShapeInteractable = ShapeInteractor(), multiline: MultilineInteractable = MultilineInteractor(), appearance: AppearanceInteractable = AppearanceInteractor(), animation: AnimationInteractable = AnimationInteractor()) {
         presenter = SkeletonPresenter(loading, transition: transition, animated: animated)
         self.shape = shape
         self.multiline = multiline
